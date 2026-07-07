@@ -5,14 +5,8 @@ library(hrbrthemes)
 library(tidyverse)
 library(gridExtra)
 
-
-#divergence_year <- read.table("/Users/yiding/Desktop/Pma_data/repeatmasker/bga_3_rounds_masked.align.landscape.My.Rclass.tab", sep="\t", 
-#                              row.names = 1)
-
-
-divergence_year <- read.table("/Users/yiding/Desktop/Pma_data/repeatmasker/bga_3_rounds_masked.align.landscape.Div.Rclass.tab", sep="\t", 
+divergence_year <- read.table("~/Pma_data/repeatmasker/bga_3_rounds_masked.align.landscape.Div.Rclass.tab", sep="\t", 
                               row.names = 1)
-
 
 divergence_year <- t(divergence_year)
 rownames(divergence_year) <- 1:50
@@ -30,9 +24,9 @@ ggplot(kd_melt2, aes(y=value, x=X1, fill = X2)) +
   theme(axis.text=element_text(size=11),axis.title =element_text(size=12)) 
 
 
-data <- readxl::read_xlsx("/Users/yiding/Desktop/Pma_data/repeatmasker/TE_analysis_results/AT_vs_TAD_TE.xlsx", sheet = 2)
+data <- readxl::read_xlsx("~/Pma_data/repeatmasker/TE_analysis_results/AT_vs_TAD_TE.xlsx", sheet = 2)
 
-data <- readxl::read_xlsx("/Users/yiding/Library/CloudStorage/OneDrive-TheUniversityofSydney(Staff)(2)/Pma_data/repeatmasker/TE_analysis_results/AT_vs_TAD_TE.xlsx", sheet = 2)
+data <- readxl::read_xlsx("~/Pma_data/repeatmasker/TE_analysis_results/AT_vs_TAD_TE.xlsx", sheet = 2)
 
 data <- data[, c(1,2,3,5)]
 colnames(data) <- c("type", "subtype", "subsubtype", "pvalue")
@@ -47,7 +41,7 @@ ggplot(data, aes(y = logP, x = type, fill = subtype)) +
   ylab("log10(p-value)") +
   geom_jitter(alpha = 0.2)
 
-data <- readxl::read_xlsx("/Users/yiding/Library/CloudStorage/OneDrive-TheUniversityofSydney(Staff)(2)/Pma_data/repeatmasker/TE_analysis_results/Obs_vs_random.xlsx")
+data <- readxl::read_xlsx("~/Pma_data/repeatmasker/TE_analysis_results/Obs_vs_random.xlsx")
 
 data <- data[, c(1,3,6,9)] 
 colnames(data) <- c("trancript_type", "overlap_category", "percentage", "type")
@@ -65,7 +59,7 @@ ggplot(data, aes(fill = overlap_category, y= type, x=percentage)) +
         strip.background = element_blank(), strip.placement = "outside")
 
 
-data <- read.table("/Users/yiding/Library/CloudStorage/OneDrive-TheUniversityofSydney(Staff)(2)/Pma_data/orthofinder_output/Pm_data/Syntnet_network/Bga_clusters_id_and_number.txt")
+data <- read.table("~/Pma_data/orthofinder_output/Pm_data/Syntnet_network/Bga_clusters_id_and_number.txt")
 
 data <- data %>% 
   group_by(V2) %>% 
